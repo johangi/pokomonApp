@@ -65,7 +65,7 @@ const Homepage = () => {
         }
 
         fetchPokomons(username);
-    }, [dispatch, pokomons]);
+    }, [dispatch, username]);
 
     return (
         <div className="home">
