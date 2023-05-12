@@ -20,6 +20,16 @@ const Homepage = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
+        switch (e.nativeEvent.submitter.name) {
+            case 'update':
+                console.log('update');
+                break;
+            case 'create':
+                console.log('create');
+                break;
+            default:
+                break;
+        }
 
         if (!user) {
             setError('You must be logged in!');
@@ -78,7 +88,8 @@ const Homepage = () => {
                 <input type="text" onChange={(e) => setAbility2(e.target.value)} value={ability2} className={emptyFields.includes('ability2') ? 'error' : ''} />
                 <label>Ability 3</label>
                 <input type="text" onChange={(e) => setAbility3(e.target.value)} value={ability3} className={emptyFields.includes('ability3') ? 'error' : ''} />
-                <button>Add Pokomon</button>
+                <button name="create">Add Pokomon</button>
+                <button className="margin-left" name="update">Update Pokomon</button>
                 {error && <div className="error">{error}</div>}
             </form>
             {pokomons &&

@@ -181,3 +181,7 @@ form.login {
 .username {
   color: white;
 }
+
+.margin-left {
+  margin-left: 10px;
+}

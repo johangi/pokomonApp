@@ -12,6 +12,10 @@ export const pokomonReducer = (state, action) => {
             return {
                 pokomons: [action.payload, ...state.pokomons]
             }
+        case 'DELETE_POKOMON':
+            return {
+                pokomons: state.pokomons.filter(p => p._id !== action.payload._id)
+            }
         default:
             return state
     }
