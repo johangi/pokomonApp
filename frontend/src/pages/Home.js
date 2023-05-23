@@ -19,7 +19,7 @@ const Home = ({ username }) => {
                     dispatch({ type: 'SET_POKOMON', payload: json.pokomons });
                 }
             } else {
-                const response = await fetch('/api/pokomon');
+                const response = await fetch('/api/user');
                 const json = await response.json();
                 if (response.ok) {
                     dispatch({ type: 'SET_POKOMON', payload: json.pokomons });

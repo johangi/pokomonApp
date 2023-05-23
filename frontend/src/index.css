@@ -185,3 +185,11 @@ form.login {
 .margin-left {
   margin-left: 10px;
 }
+
+.change_circle {
+  margin-right: 30px;
+}
+
+#author {
+  color: white;
+}

@@ -16,6 +16,10 @@ export const pokomonReducer = (state, action) => {
             return {
                 pokomons: state.pokomons.filter(p => p._id !== action.payload._id)
             }
+        case 'UPDATE_POKOMON':
+            return {
+                pokomons: [action.payload, ...state.pokomons.filter(p => p._id !== action.payload._id)]
+            }
         default:
             return state
     }

@@ -1,10 +1,11 @@
 import { usePokomonContext } from "../hooks/usePokomonContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { Link } from "react-router-dom";
 
-const PokomonDetails = ({ pokomon }) => {
+const PokomonDetails = ({ pokomon, handleUpdate }) => {
     const { dispatch } = usePokomonContext();
     const { user } = useAuthContext();
-
+    
     const handleClick = async () => {
         if (!user) {
             return;
@@ -25,7 +26,7 @@ const PokomonDetails = ({ pokomon }) => {
 
     return (
         <div className="shoe-details" id={pokomon._id}>
-            <img src="/pokomon.jpg" alt=""  height="200px "width="100%"/>
+            <img src="/pokomon.jpg" alt="" height="200px " width="100%" />
             <h4>{pokomon.name}</h4>
             <p>Abilities:</p>
             <ul className='white'>
@@ -33,8 +34,13 @@ const PokomonDetails = ({ pokomon }) => {
                 <li>{pokomon.ability2}</li>
                 <li>{pokomon.ability3}</li>
             </ul>
-            <p><strong>Author: </strong>{pokomon.author}</p>
-            {user && user.username === pokomon.author && <span className="material-symbols-outlined" onClick={handleClick}>delete</span>}
+            <p><strong>Author: </strong><Link to={"/" + pokomon.author} id="author">{pokomon.author}</Link></p>
+            {user && user.username === pokomon.author &&
+                <div>
+                    <span className="material-symbols-outlined change_circle" onClick={handleUpdate} href="#updateForm">change_circle</span>
+                    <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+                </div>
+            }
         </div>
     );
 }
