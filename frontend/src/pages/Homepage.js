@@ -49,7 +49,7 @@ const Homepage = () => {
         switch (eventType) {
             case 'update':
                 console.log('update');
-                const updateRes = await fetch(`/api/pokomon/update`, {
+                const updateRes = await fetch(`${process.env.REACT_APP_HOST}/api/pokomon/update`, {
                     method: 'PUT',
                     body: JSON.stringify(pokomon),
                     headers: {
@@ -75,7 +75,7 @@ const Homepage = () => {
                 break;
             case 'create':
                 console.log('create');
-                const response = await fetch('/api/pokomon/create', {
+                const response = await fetch(process.env.REACT_APP_HOST + '/api/pokomon/create', {
                     method: 'POST',
                     body: JSON.stringify(pokomon),
                     headers: {
@@ -107,7 +107,7 @@ const Homepage = () => {
 
     useEffect(() => {
         const fetchPokomons = async (username) => {
-            const response = await fetch('/api/pokomon/' + username);
+            const response = await fetch(process.env.REACT_APP_HOST + '/api/pokomon/' + username);
             const json = await response.json();
 
             if (response.ok) {

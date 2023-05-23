@@ -11,7 +11,7 @@ const PokomonDetails = ({ pokomon, handleUpdate }) => {
             return;
         }
 
-        const response = await fetch('/api/pokomon/delete/' + pokomon._id, {
+        const response = await fetch(process.env.REACT_APP_HOST + '/api/pokomon/delete/' + pokomon._id, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`

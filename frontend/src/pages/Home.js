@@ -12,7 +12,7 @@ const Home = ({ username }) => {
     useEffect(() => {
         const fetchPokomon = async (username) => {
             if (username) {
-                const response = await fetch('/api/pokomon/' + username);
+                const response = await fetch(process.env.REACT_APP_HOST + '/api/pokomon/' + username);
                 const json = await response.json();
 
                 if (response.ok) {
