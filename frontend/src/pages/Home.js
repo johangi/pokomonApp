@@ -12,17 +12,14 @@ const Home = ({ username }) => {
     useEffect(() => {
         const fetchPokomon = async (username) => {
             if (username) {
-                const response = await fetch(process.env.REACT_APP_HOST + '/api/pokomon/' + username, {
-                    method: 'GET',
-                    mode: 'no-cors'
-                });
+                const response = await fetch(process.env.REACT_APP_HOST + '/api/pokomon/' + username);
                 const json = await response.json();
 
                 if (response.ok) {
                     dispatch({ type: 'SET_POKOMON', payload: json.pokomons });
                 }
             } else {
-                const response = await fetch('/api/user');
+                const response = await fetch(process.env.REACT_APP_HOST + '/api/user/');
                 const json = await response.json();
                 if (response.ok) {
                     dispatch({ type: 'SET_POKOMON', payload: json.pokomons });
