@@ -5,7 +5,7 @@ const { getPokomons, createPokomon, deletePokomon, updatePokomon } = require('..
 const router = express.Router();
 router.use(requireAuth);
 
-router.get('/:username', getPokomons);
+router.post('/:username', getPokomons);
 
 router.post('/create', createPokomon);
 

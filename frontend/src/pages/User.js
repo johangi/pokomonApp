@@ -8,10 +8,18 @@ const User = () => {
     const params = useParams();
     const username = params.user
     const { pokomons, dispatch } = usePokomonContext();
+    const userItem = localStorage.getItem('user');
+    const user = JSON.parse(userItem);
 
     useEffect(() => {
         const fetchPokomons = async (username) => {
-            const response = await fetch(process.env.REACT_APP_HOST + '/api/pokomon/' + username);
+            const response = await fetch(process.env.REACT_APP_HOST + '/api/pokomon/' + username, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
             const json = await response.json();
 
             if (response.ok) {
