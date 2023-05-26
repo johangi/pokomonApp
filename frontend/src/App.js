@@ -35,7 +35,7 @@ function App() {
             />
             <Route 
               path="/:user"
-              element={<User />}
+              element={user ? <User /> : <Navigate to="/" replace />}
             />
           </Routes>
           </div>
